@@ -6,7 +6,9 @@ from apps.core.models import TimeStampedModel
 
 
 class UserManager(BaseUserManager):
-    """Custom manager because we log in with email, not username."""
+    """
+    Custom manager because we log in with email, not username.
+    """
 
     def create_user(self, email, password=None, **extra_fields):
         if not email:
@@ -26,7 +28,6 @@ class UserManager(BaseUserManager):
 class User(AbstractUser):
     """
     Custom user with email as the login field instead of username.
-    We still keep first_name/last_name from AbstractUser.
     """
     username = None
     email = models.EmailField(unique=True)
