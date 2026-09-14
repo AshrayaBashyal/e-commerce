@@ -21,6 +21,8 @@ class MeView(agenerics.RetrieveUpdateAPIView):
 
 class AddressViewSet(aviewsets.ModelViewSet):
     serializer_class = AddressSerializer
+    # Provide a dummy queryset for the schema inspector so it knows the base model type
+    queryset = Address.objects.none() 
 
     def get_queryset(self):
         return Address.objects.filter(user=self.request.user)
