@@ -23,3 +23,26 @@ else:
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',    # vite dev server
 ]
+
+
+SPECTACULAR_SETTINGS = {
+    # Basic API Metadata
+    'TITLE': 'E-commerce',
+    'DESCRIPTION': 'E-commerce API',
+    'VERSION': '1.0.0',
+    'SERVE_INCLUDE_SCHEMA': False,
+    
+    # UI Customization (Swagger & ReDoc)
+    'SWAGGER_UI_SETTINGS': {
+        'deepLinking': True,
+        'persistAuthorization': True,  # Keeps the token saved after reloading the page
+        'displayOperationId': True,
+    },
+    
+    # Advanced Configurations
+    'COMPONENT_SPLIT_REQUEST': True, # Separates Request and Response schemas in documentation
+    'OAS_VERSION': '3.1.0',          
+    
+    # Hook for Authentication / Third-party apps
+    # (drf-spectacular auto-detects most common packages like SimpleJWT)
+}
