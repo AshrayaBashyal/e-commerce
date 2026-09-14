@@ -27,6 +27,10 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'django_filters',
     'adrf',  # async support on top of DRF
+    'drf_spectacular',
+
+    'apps.core',
+    'apps.accounts',
 ]
 
 MIDDLEWARE = [
@@ -40,6 +44,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'config.urls'
+
+AUTH_USER_MODEL = 'accounts.User'
+
 
 TEMPLATES = [
     {
@@ -91,6 +98,7 @@ REST_FRAMEWORK = {
         'rest_framework.filters.SearchFilter',
         'rest_framework.filters.OrderingFilter',
     ),
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
 }
 
 
