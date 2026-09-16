@@ -22,6 +22,10 @@ class UserProfileSerializer(serializers.ModelSerializer):
         read_only_fields = fields
 
 
+class RefreshTokenSerializer(serializers.Serializer):
+    refresh = serializers.CharField()
+
+
 class UserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

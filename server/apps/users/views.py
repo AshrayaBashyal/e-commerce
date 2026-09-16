@@ -1,10 +1,11 @@
 from django.contrib.auth import get_user_model
 from rest_framework import generics, permissions, status
+from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework_simplejwt.tokens import RefreshToken
-from rest_framework.response import Response
+from drf_spectacular.utils import extend_schema
 
-from .serializers import RegisterSerializer, UserProfileSerializer
+from .serializers import RefreshTokenSerializer, RegisterSerializer, UserProfileSerializer
 
 User = get_user_model()
 
@@ -32,6 +33,7 @@ class LogoutView(APIView):
 
     permission_classes = [permissions.IsAuthenticated]
 
+    @extend_schema(request=RefreshTokenSerializer, responses={205: None})
     def post(self, request):
         refresh_token = request.data.get("refresh")
         if not refresh_token:
