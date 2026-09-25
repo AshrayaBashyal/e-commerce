@@ -1,5 +1,6 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import ProtectedRoute from './components/ProtectedRoute'
 
 import Home from './pages/Home'
@@ -22,6 +23,9 @@ import SuperuserDashboard from './pages/superuser/Dashboard'
 import SuperuserUsers from './pages/superuser/Users'
 
 export default function App() {
+  const location = useLocation()
+  const isBackOffice = location.pathname.startsWith('/admin') || location.pathname.startsWith('/superuser')
+
   return (
     <>
       <Navbar />
@@ -67,6 +71,7 @@ export default function App() {
 
         <Route path="*" element={<Home />} />
       </Routes>
+      {!isBackOffice && <Footer />}
     </>
   )
 }

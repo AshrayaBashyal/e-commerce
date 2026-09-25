@@ -26,3 +26,10 @@ export function getTile(name = '') {
   const idx = hashString(name) % PALETTE.length
   return PALETTE[idx]
 }
+
+// Decorative stock photography for homepage banners/category art — never
+// used for actual product photos (those come from the backend or fall back
+// to the monogram tile above, so we never misrepresent what's for sale).
+export function stockPhoto(seed, width = 800, height = 600) {
+  return `https://picsum.photos/seed/${encodeURIComponent(seed)}/${width}/${height}`
+}
